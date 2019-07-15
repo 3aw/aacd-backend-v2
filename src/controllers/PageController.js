@@ -1,5 +1,5 @@
 module.exports = {
   async index(req, res) {
-    return "Hello, World!";
+    return res.send("Hello, World!");
   }
 };

@@ -4,7 +4,6 @@ const routes = new express.Router();
 
 const PageController = require("./controllers/PageController");
 
-routes.get("/", function(req, res) {
-  res.send("Hello World!");
-});
+routes.get("/", PageController.index);
+
 module.exports = routes;
