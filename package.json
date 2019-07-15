@@ -1,0 +1,8 @@
+{
+  "name": "aacd-backend-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:3aw/aacd-backend-v2.git",
+  "author": "Samuel Levy <samuellevy@meshproducoes.com.br>",
+  "license": "MIT"
+}
