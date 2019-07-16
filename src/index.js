@@ -1,13 +1,3 @@
-const express = require("express");
-const cors = require("cors");
+const server = require("./server");
 
-const app = express();
-
-const server = require("http").Server(app);
-
-app.use(cors());
-app.use(require("./routes"));
-
-app.listen(3000, function() {
-  console.log("Example app listening on port 3000!");
-});
+server.listen(3000);
