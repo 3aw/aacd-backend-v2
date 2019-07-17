@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("buyers", {
+    return queryInterface.createTable("subscribers", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,11 +24,31 @@ module.exports = {
       rg: {
         allowNull: false,
         type: Sequelize.STRING(255)
-      },
+      }, //rg
       birthdate: {
         allowNull: false,
         type: Sequelize.STRING(255)
-      },
+      }, //birthdate
+      value: {
+        allowNull: false,
+        type: Sequelize.STRING(255)
+      }, //value
+      event_id: {
+        allowNull: false,
+        type: Sequelize.STRING(255)
+      }, //event_id
+      buyer_id: {
+        allowNull: false,
+        type: Sequelize.STRING(255)
+      }, //buyer_id
+      payment_id: {
+        allowNull: false,
+        type: Sequelize.STRING(255)
+      }, //payment_id
+      event_id: {
+        allowNull: false,
+        type: Sequelize.STRING(255)
+      }, //event_id
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -41,6 +61,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("buyers");
+    return queryInterface.dropTable("subscribers");
   }
 };
