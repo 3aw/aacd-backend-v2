@@ -1,9 +1,15 @@
-const mysql = require("mysql");
+const { Buyers } = require("../models");
 
-module.exports = {
-  async all(req, res) {
-    return res.send("Hello, World!");
-  },
+class BuyersController {
+  create(req, res) {
+    return res.json({ ok: true });
+  }
 
-  async get(req, res) {}
-};
+  async store(req, res) {
+    await User.create(req.body);
+
+    return res.json({ ok: true });
+  }
+}
+
+module.exports = new BuyersController();
