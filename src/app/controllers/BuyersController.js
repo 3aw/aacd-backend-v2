@@ -1,4 +1,4 @@
-const { Buyers } = require("../models");
+const { Buyer } = require("../models");
 
 class BuyersController {
   create(req, res) {
@@ -6,8 +6,35 @@ class BuyersController {
   }
 
   async store(req, res) {
-    await User.create(req.body);
+    console.log(req.body);
+    await Buyer.create(req.body);
 
+    return res.json({ ok: true });
+  }
+
+  async getAll(req, res) {
+    const buyers = await Buyer.findAll({});
+    return res.json(buyers);
+  }
+
+  async get(req, res) {
+    const { id } = req.params;
+    // const buyers = await Buyer.findAll({ where: { id: id } });
+    const buyer = await Buyer.findByPk(id);
+    return res.json(buyer);
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const buyer = await Buyer.findByPk(id);
+    buyer.update({ name: "Vinicius" });
+    return res.json({ ok: true });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const buyer = await Buyer.findByPk(id);
+    buyer.destroy();
     return res.json({ ok: true });
   }
 }
