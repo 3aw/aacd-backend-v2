@@ -6,14 +6,13 @@
   "author": "Samuel Levy <samuellevy@meshproducoes.com.br>",
   "license": "MIT",
   "scripts": {
-    "watch": "nodemon src/index.js"
+    "start": "nodemon src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mariadb": "^2.1.0",
     "mysql": "^2.17.1",
-    "nunjucks": "^3.2.0",
     "sequelize": "^5.10.1"
   },
   "devDependencies": {
