@@ -7,9 +7,10 @@ class BuyersController {
 
   async store(req, res) {
     console.log(req.body);
-    await Buyer.create(req.body);
+    //const buyer = await Buyer.create(req.body);
 
-    return res.json({ ok: true });
+    // return res.json({ ok: true, buyer: buyer });
+    return res.json({ ok: true, data: req.body });
   }
 
   async getAll(req, res) {
