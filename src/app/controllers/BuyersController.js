@@ -1,4 +1,4 @@
-const { Buyer } = require("../models");
+const { Buyer, Subscriber } = require("../models");
 
 class BuyersController {
   create(req, res) {
@@ -7,10 +7,14 @@ class BuyersController {
 
   async store(req, res) {
     console.log(req.body);
-    //const buyer = await Buyer.create(req.body);
+    const { buyer, subscribers } = req.body;
 
-    // return res.json({ ok: true, buyer: buyer });
-    return res.json({ ok: true, data: req.body });
+    const lastBuyer = await Buyer.create(buyer);
+    const lastSubscribers = await Subscriber.bulkCreate(subscribers);
+
+    return res.json({ ok: true, subscribers: req.body.subscribers });
+
+    // return res.json({ ok: true, data: req.body });
   }
 
   async getAll(req, res) {
