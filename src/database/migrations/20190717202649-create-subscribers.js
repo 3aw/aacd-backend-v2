@@ -13,22 +13,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(255)
       },
-      email: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      },
-      phone: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      },
       rg: {
         allowNull: false,
         type: Sequelize.STRING(255)
       }, //rg
-      birthdate: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      }, //birthdate
       value: {
         allowNull: false,
         type: Sequelize.STRING(255)
@@ -45,10 +33,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(255)
       }, //payment_id
-      event_id: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      }, //event_id
       created_at: {
         allowNull: false,
         type: Sequelize.DATE

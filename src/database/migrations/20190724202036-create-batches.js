@@ -2,32 +2,20 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("buyers", {
+    return queryInterface.createTable("batches", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      value: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.DOUBLE(11, 2)
       },
-      email: {
+      max: {
         allowNull: false,
-        type: Sequelize.STRING(255)
-      },
-      phone: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      },
-      birthdate: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      },
-      rg: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -41,6 +29,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("buyers");
+    return queryInterface.dropTable("batches");
   }
 };

@@ -2,32 +2,36 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("buyers", {
+    return queryInterface.createTable("payments", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      uid: {
         allowNull: false,
         type: Sequelize.STRING(255)
       },
-      email: {
+      total: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.DOUBLE(11, 2)
       },
-      phone: {
+      status: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.INTEGER
       },
-      birthdate: {
+      batch_id: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.INTEGER
       },
-      rg: {
+      buyer_id: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.INTEGER
+      },
+      event_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -41,6 +45,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("buyers");
+    return queryInterface.dropTable("payments");
   }
 };
