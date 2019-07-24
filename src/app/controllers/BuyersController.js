@@ -8,13 +8,21 @@ class BuyersController {
   async store(req, res) {
     console.log(req.body);
     let { buyer, subscribers } = req.body;
-    subscribers = [...subscribers, buyer];
-    
-    const lastBuyer = await Buyer.create(buyer);
+
+    let { email, birthdate, phone, ...buyer_subscribe } = buyer;
+
+    subscribers = [buyer_subscribe];
+
+    // const lastBuyer = await Buyer.create(buyer);
+
+    // buyer.buyer_id = lastBuyer.id;
+    // buyer.event_id = 1;
+    // buyer.payment_id = 1;
+
     // console.log(lastBuyer.id);
     // const lastSubscribers = await Subscriber.bulkCreate(subscribers);
 
-    return res.json({ ok: true, buyer:buyer, subscribers: subscribers });
+    return res.json({ ok: true, buyer: buyer, subscribers: subscribers });
   }
 
   async getAll(req, res) {
