@@ -1,0 +1,36 @@
+{
+    "buyer": {
+        "name":"Samuel Levy",
+        "email": "samuellevy@meshproducoes.com.br",
+        "phone":"21969430426",
+				"birthdate":"20/07/1992",
+				"rg":"23.488.577-0"
+    },
+    "subscribers":[
+        {
+            "name":"Samuel Levy",
+            "rg":"23.488.577-0",
+            "value":"1.00",
+            "event_id":1,
+            "buyer_id":1,
+            "payment_id":1
+
+        },
+        {
+            "name":"Vinicius Machado",
+            "rg":"11.222.333-4",
+            "value":"1.00",
+            "event_id":1,
+            "buyer_id":1,
+            "payment_id":1
+        },
+        {
+            "name":"Cayque Freitas",
+            "rg":"666.777.888-9",
+            "value":"1.00",
+            "event_id":1,
+            "buyer_id":1,
+            "payment_id":1
+        }
+    ]
+}
