@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING(255)
+      },
       value: {
         allowNull: false,
         type: Sequelize.DOUBLE(11, 2)
@@ -17,13 +21,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      created_at: {
+      event_id: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      updated_at: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       }
     });
   },
