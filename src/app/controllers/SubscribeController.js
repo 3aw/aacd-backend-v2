@@ -40,10 +40,10 @@ class SubscribeController {
     const lastPayment = await Payment.create(payment);
 
     // paypal
-    this.pay(req, res, lastPayment);
+    this.pay(req, res, lastPayment, lastSubscribers);
   };
 
-  pay = async (req, res, lastPayment) => {
+  pay = async (req, res, lastPayment, lastSubscribers) => {
     let response = "teste";
 
     paypal.configure({
@@ -51,6 +51,27 @@ class SubscribeController {
       client_id: "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
       client_secret: "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
     });
+
+    let items = [];
+    let amount = {};
+
+    lastSubscribers.map(subscribe => {
+      items = [
+        ...items,
+        {
+          name: `Ingresso 1º lote de ${subscribe.name}`,
+          sku: "001",
+          price: `${subscribe.value}`,
+          currency: "BRL",
+          quantity: 1
+        }
+      ];
+    });
+
+    amount = {
+      currency: "BRL",
+      total: `${lastPayment.total}`
+    };
 
     const create_payment_json = {
       intent: "sale",
@@ -64,20 +85,9 @@ class SubscribeController {
       transactions: [
         {
           item_list: {
-            items: [
-              {
-                name: "Red sox hat",
-                sku: "001",
-                price: "1.00",
-                currency: "BRL",
-                quantity: 1
-              }
-            ]
+            items: items
           },
-          amount: {
-            currency: "BRL",
-            total: "1.00"
-          },
+          amount: amount,
           description: "This is the payment description."
         }
       ]
