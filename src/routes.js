@@ -15,7 +15,7 @@ routes.get("/buyers/delete/:id", BuyersController.delete);
 routes.post("/new", BuyersController.store);
 
 routes.get("/pay", PageController.pay);
-routes.get("/success", PageController.success);
+routes.get("/success", SubscribeController.success);
 
 routes.post("/subscribe/new", SubscribeController.store);
 
