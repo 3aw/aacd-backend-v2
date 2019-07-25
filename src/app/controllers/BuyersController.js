@@ -1,4 +1,4 @@
-const { Buyer, Subscriber } = require("../models");
+const { Buyer, Subscriber, Payment } = require("../models");
 
 class BuyersController {
   create(req, res) {
@@ -7,13 +7,21 @@ class BuyersController {
 
   async store(req, res) {
     console.log(req.body);
-    let { buyer, subscribers } = req.body;
-
+    let { buyer, subscribers, payment } = req.body;
     let { email, birthdate, phone, ...buyer_subscribe } = buyer;
 
-    subscribers = [buyer_subscribe];
+    //mounting subscribers
+    subscribers = [...subscribers, buyer_subscribe];
 
+    // creating buyer and payment
     // const lastBuyer = await Buyer.create(buyer);
+    // const lastPayment = await Payment.create(payment);
+
+    //adding new properties to each subscriber
+    subscribers.map((subscriber, index) => {
+      subscriber.payment_id = 1;
+      subscriber.buyer_id = 1;
+    });
 
     // buyer.buyer_id = lastBuyer.id;
     // buyer.event_id = 1;
