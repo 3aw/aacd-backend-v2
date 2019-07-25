@@ -9,7 +9,6 @@ class BuyersController {
     console.log(req.body);
     let { buyer, subscribers, payment } = req.body;
     let { email, birthdate, phone, ...buyer_subscribe } = buyer;
-
     //mounting subscribers
     subscribers = [...subscribers, buyer_subscribe];
 

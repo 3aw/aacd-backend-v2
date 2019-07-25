@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       uid: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING(255)
       },
       total: {

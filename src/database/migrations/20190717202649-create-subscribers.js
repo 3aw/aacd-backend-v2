@@ -23,16 +23,12 @@ module.exports = {
       }, //value
       event_id: {
         allowNull: false,
-        type: Sequelize.STRING(255)
+        type: Sequelize.INTEGER
       }, //event_id
       buyer_id: {
         allowNull: false,
         type: Sequelize.STRING(255)
       }, //buyer_id
-      payment_id: {
-        allowNull: false,
-        type: Sequelize.STRING(255)
-      }, //payment_id
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
