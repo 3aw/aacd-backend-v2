@@ -5,10 +5,8 @@ module.exports = {
   async pay(req, res) {
     paypal.configure({
       mode: "sandbox",
-      client_id:
-        "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
-      client_secret:
-        "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
+      client_id: "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
+      client_secret: "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
     });
 
     const create_payment_json = {
@@ -70,10 +68,7 @@ module.exports = {
       ]
     };
 
-    paypal.payment.execute(paymentId, execute_payment_json, function(
-      error,
-      payment
-    ) {
+    paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
       if (error) {
         console.log("error");
       } else {

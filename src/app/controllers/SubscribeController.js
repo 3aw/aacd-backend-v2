@@ -146,7 +146,8 @@ class SubscribeController {
         console.log(error);
         return res.json({ ok: false, error: error });
       } else {
-        return res.json({ ok: true });
+        // return res.json({ ok: true });
+        return res.redirect("http://localhost:3001/success");
       }
     });
   };
