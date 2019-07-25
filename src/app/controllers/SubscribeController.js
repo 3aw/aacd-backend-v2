@@ -2,11 +2,7 @@ const { Buyer, Subscriber, Payment } = require("../models");
 const paypal = require("paypal-rest-sdk");
 
 class SubscribeController {
-  test(req, res) {
-    return res.send("Funciona!");
-  }
-
-  async store(req, res) {
+  store = async (req, res) => {
     let { buyer, subscribers } = req.body;
     let { email, birthdate, phone, ...buyer_subscribe } = buyer;
     let payment = {
@@ -44,28 +40,16 @@ class SubscribeController {
     const lastPayment = await Payment.create(payment);
 
     // paypal
+    this.pay(req, res, lastPayment);
+  };
 
-    // end paypal
+  pay = async (req, res, lastPayment) => {
+    let response = "teste";
 
-    return res.json({
-      ok: true,
-      buyer: lastBuyer,
-      subscribers: lastSubscribers,
-      payment: lastPayment
-    });
-  }
-
-  teste() {
-    return "teste";
-  }
-
-  async pay() {
     paypal.configure({
       mode: "sandbox",
-      client_id:
-        "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
-      client_secret:
-        "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
+      client_id: "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
+      client_secret: "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
     });
 
     const create_payment_json = {
@@ -99,14 +83,29 @@ class SubscribeController {
       ]
     };
 
-    paypal.payment.create(create_payment_json, function(error, payment) {
-      if (error) {
-        return error;
-      } else {
-        return payment;
-      }
+    paypal.payment.create(create_payment_json, async (error, payment) => {
+      this.createPayment(req, res, lastPayment, payment, error);
     });
-  }
+
+    return response;
+  };
+
+  createPayment = async (req, res, lastPayment, payment, error) => {
+    let url = null;
+    if (error) {
+      return res.json({ ok: false, error: error });
+    } else {
+      for (let i = 0; i < payment.links.length; i++) {
+        if (payment.links[i].rel === "approval_url") {
+          url = payment.links[i].href;
+        }
+      }
+      lastPayment.update({ uid: payment.id });
+      return res.json({ ok: true, url: url });
+    }
+
+    console.log(payment);
+  };
 }
 
 module.exports = new SubscribeController();
