@@ -5,8 +5,10 @@ class SubscribeController {
   configurePaypal = async () => {
     paypal.configure({
       mode: "sandbox",
-      client_id: "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
-      client_secret: "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
+      client_id:
+        "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
+      client_secret:
+        "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
     });
   };
 
@@ -92,7 +94,8 @@ class SubscribeController {
             items: items
           },
           amount: amount,
-          description: "Ingressos para o evento Impactar 2019 que será realizado pela AACD com início em 01/10/2019."
+          description:
+            "Ingressos para o evento Impactar 2019 que será realizado pela AACD com início em 01/10/2019."
         }
       ]
     };
@@ -141,7 +144,10 @@ class SubscribeController {
       ]
     };
 
-    paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
+    paypal.payment.execute(paymentId, execute_payment_json, function(
+      error,
+      payment
+    ) {
       if (error) {
         console.log(error);
         return res.json({ ok: false, error: error });
