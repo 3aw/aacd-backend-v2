@@ -3,12 +3,17 @@ const paypal = require("paypal-rest-sdk");
 
 class SubscribeController {
   configurePaypal = async () => {
+    // paypal.configure({
+    //   mode: "sandbox",
+    //   client_id:
+    //     "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
+    //   client_secret:
+    //     "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
+    // });
     paypal.configure({
-      mode: "sandbox",
-      client_id:
-        "ATcjnceGtqrltmuzNcuuXbiY4dtAuAXW31Lc9h2hraVdYYglTFMdHMhPkN0qrgZlKLAGbDPDV1wYfJjr",
-      client_secret:
-        "EE_aFgHqCTqfKVWtxgEY4CsQdO9yL3qaEOEK843iWU-HYv4GO1YPb9Kjoh3yUn0wDhCw1Du4LHCBaF17"
+      mode: "live",
+      client_id: "AQ5riggKoxjjMJKhusC45gTw6Ru8ba-HXLCaPZXeTBVoCFN6r4uYHfW2Crk06PnqEGE-T-Ol0_ZUEBPO",
+      client_secret: "EIQ1JSgNr7YAiJ72OF9YRb333Oeb2qY_y8LuZ47-BOcQ1v12tBcQrzUZ6W2uauc1VlBQOuzRmVPtgQVA"
     });
   };
 
@@ -94,8 +99,7 @@ class SubscribeController {
             items: items
           },
           amount: amount,
-          description:
-            "Ingressos para o evento Impactar 2019 que será realizado pela AACD com início em 01/10/2019."
+          description: "Ingressos para o evento Impactar 2019 que será realizado pela AACD com início em 01/10/2019."
         }
       ]
     };
@@ -144,10 +148,7 @@ class SubscribeController {
       ]
     };
 
-    paypal.payment.execute(paymentId, execute_payment_json, function(
-      error,
-      payment
-    ) {
+    paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
       if (error) {
         console.log(error);
         return res.json({ ok: false, error: error });
