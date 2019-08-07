@@ -14,7 +14,7 @@ class App {
   }
 
   middlewares() {
-    this.express.use(cors());
+    this.express.use(cors({ origin: "http://impactar.aacd.org.br", optionsSuccessStatus: 200 }));
     this.express.use(express.urlencoded({ extended: false }));
   }
 
